@@ -9,8 +9,8 @@ let food = {
 }
 
 snake[0] = {
-    x: 8*box,
-    y: 8*box
+    x: 8 * box,
+    y: 8 * box
 }
 
 let direction = 'left'
@@ -52,35 +52,35 @@ function startGame(){
     for(i = 1; i< snake.length; i++){
         if(snake[0].x == snake[i].x && snake[0].y == snake[i].y){
             clearInterval(game)
-            alert('Fim de jogo :<')
+            alert('Fim de jogo :<')          
         }
     }
-
+    //document.getElementById('score').innerHTML('SCORE: ' + score)
     drawBG()
     drawSnake()
     drawFood()
 
     let snakeX = snake[0].x
     let snakeY = snake[0].y
-
+    
     //direções
     if(direction == 'right') snakeX += box;
     if(direction == 'left') snakeX -= box;
     if(direction == 'up') snakeY -= box;
     if(direction == 'down') snakeY += box;
 
-    //se comer a fruta o tamanho da cobra é incrementado
-    if(snakeX != food.x || snakeY != food.y){
-        snake.pop()
-    }
-    else{
-        food.x = Math.floor(Math.random() * 15 + 1) * box;
-        food.y = Math.floor(Math.random() *15 + 1) * box;
-    }       
-
     let newHead = {
         x: snakeX,
         y: snakeY
+    };
+    //se comer a fruta o tamanho da cobra é incrementado
+    if(snakeX != food.x || snakeY != food.y){
+        snake.pop()        
+        
+    }
+    else{
+        food.x = Math.floor(Math.random() * 15 + 1) * box
+        food.y = Math.floor(Math.random() *15 + 1) * box
     }
 
     snake.unshift(newHead)
